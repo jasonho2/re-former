@@ -23,6 +23,17 @@
 <% end %>
 -->
 
+<% if @user.errors.any? %>
+  <div style="color: red;">
+    <p><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</p>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_with model: @user do |form| %>
 
   <%= form.label :username %><br>
